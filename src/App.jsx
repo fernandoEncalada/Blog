@@ -4,6 +4,7 @@ import { Footer } from "./components/Footer"
 import { Header } from "./components/Header"
 import { MainArticle } from "./components/MainArticle"
 import { NewContainer } from "./components/NewContainer"
+import { AppRouter } from "./router/AppRouter"
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
         <NewContainer />
       </div>
       <ArticleContainer />
-      <ArticleDetail />
+      <AppRouter />
+      {/* <ArticleDetail /> */}
     </main>
     <Footer />
     </>
