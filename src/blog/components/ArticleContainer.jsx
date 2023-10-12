@@ -1,7 +1,7 @@
 import { Article } from "./Article"
-import imgOne from '../assets/images/image-retro-pcs.jpg'
+import imgOne from '../../assets/images/image-retro-pcs.jpg'
 import { useEffect, useState } from "react"
-import { getPublications } from "../helpers/getPublications"
+import { getPublications } from "../../helpers/getPublications"
 
 export const ArticleContainer = () => {
 
@@ -17,11 +17,11 @@ export const ArticleContainer = () => {
   }, [])
 
   return (
-    <section className="mt-6 md:flex md:flex-wrap md:gap-10">
+    <section className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
       {
         publications.map(publication => (
           <Article key={publication.id} img={imgOne} 
-          num='01' title={publication.title} text={publication.content}/>
+          id={ publication.id } title={publication.title} text={publication.content} date={ publication.createdAt } category={ publication.category.name } />
         ))
       }
     </section>

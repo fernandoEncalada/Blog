@@ -1,7 +1,7 @@
-import imageMobile from '../assets/images/image-web-3-mobile.jpg'
-import imageDesktop from '../assets/images/image-web-3-desktop.jpg'
+import imageMobile from '../../assets/images/image-web-3-mobile.jpg'
+import imageDesktop from '../../assets/images/image-web-3-desktop.jpg'
 import { useEffect, useState } from 'react'
-import { getPublications } from '../helpers/getPublications'
+import { getPublications } from '../../helpers/getPublications'
 
 export const MainArticle = () => {
   const [publications, setPublications ] = useState([])

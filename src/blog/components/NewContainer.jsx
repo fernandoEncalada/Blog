@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NewArticle } from './NewArticle'
-import { getPublications } from '../helpers/getPublications'
+import { getPublications } from '../../helpers/getPublications'
 
 export const NewContainer = () => {
   const [publications, setPublications ] = useState([])

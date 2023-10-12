@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import burgerMenu from '../assets/images/icon-menu.svg'
 import closeBtn from '../assets/images/icon-menu-close.svg'
 import { getCategories } from '../helpers/getCategories';
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
 
@@ -28,7 +29,9 @@ export const Navbar = () => {
           <img className='w-8 h-8 mb-[87px]' src={closeBtn} onClick={handleClick} alt="" />
         </li>
         <li className='mb-8 sm:mb-0'>
-          <a className='hover:text-SoftRed sm:text-4' href="#">Home</a>
+          <Link className='hover:text-SoftRed sm:text-4' to="/">
+            Home
+          </Link>
         </li>
         {
           categories.map(category => (
