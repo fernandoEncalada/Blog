@@ -42,6 +42,7 @@ export const Navbar = () => {
         }
       </ul>
       <img className={`${menuClicked ? '' : 'hidden'} w-10 h-4 cursor-pointer sm:hidden`} src={burgerMenu} onClick={handleClick} alt="" />
+  
     </>
   )
 }

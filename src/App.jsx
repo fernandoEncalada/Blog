@@ -6,11 +6,14 @@ function App() {
 
   return (
     <>
-    <main className="px-4 pt-6">
-      <Header />
-      <AppRouter />
-    </main>
-    <Footer />
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-grow px-4 pt-6">
+        <Header />
+        <AppRouter />
+      </main>
+      <Footer />
+    </div>
+
     </>
   )
 }

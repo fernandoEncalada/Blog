@@ -14,7 +14,6 @@ export const Article = ({ id, img, title, text, date, category }) => {
       <div className="">
         <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
           <Link to={`${id}`}>
-            <span className="absolute inset-0" />
             {title}
           </Link>
         </h3>
@@ -26,10 +25,7 @@ export const Article = ({ id, img, title, text, date, category }) => {
         <img src={img} alt="" className="h-10 w-10 rounded-full bg-gray-50" />
         <div className="text-sm leading-6">
           <p className="font-semibold text-gray-900">
-            <a>
-              <span className="absolute inset-0" />
               Fernando Encalada
-            </a>
           </p>
           <p className="text-gray-600">What</p>
         </div>

@@ -17,7 +17,7 @@ export const ArticleContainer = () => {
   }, [])
 
   return (
-    <section className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+    <section className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 border-t border-gray-200 sm:mt-5 sm:pt-5 lg:mx-0 lg:max-w-none lg:grid-cols-3">
       {
         publications.map(publication => (
           <Article key={publication.id} img={imgOne} 
