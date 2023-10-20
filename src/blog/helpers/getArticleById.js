@@ -1,7 +1,6 @@
 import { getPublications } from "../../helpers/getPublications"
 
-export const getArticleById = async( id ) => {
-    const data  = await getPublications(10);
+export const getArticleById = ( publications, id ) => {
 
-    return data.content.find(article => article.id === parseInt(id));
+    return publications.find(article => article.id === parseInt(id));
 }

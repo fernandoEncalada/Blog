@@ -1,18 +1,40 @@
-import { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useRef, useState } from 'react';
+import { useBlogStore } from '../../hooks/useBlogStore';
 
 export const NewArticlePage = () => {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const fileInputRef = useRef();
 
-    const { article, messageSaved, isSaving } = useSelector( state => state.blog );
+    // const { article, messageSaved, isSaving } = useSelector( state => state.blog );
 
+    const { startSavingPublication } = useBlogStore();
+
+    const [ formValues, setFormValues ] = useState({
+        title: '',
+        content: '',
+        comments: [],
+        categoryId: 1,
+        picture: ''
+    });
+
+    const onInputChange = ({ target }) => {
+        setFormValues({
+            ...formValues,
+            [target.name]: target.value
+        })
+    }
+
+    const onSubmit = async( event ) => {
+        event.preventDefault();
+
+        await startSavingPublication( formValues )
+    }
 
     return (
         <>
-            <form>
+            <form onSubmit={ onSubmit }>
                 <div className="space-y-12">
                     <div className="border-b border-gray-900/10 pb-12">
 
@@ -25,10 +47,10 @@ export const NewArticlePage = () => {
                                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                         <input
                                             type="text"
-                                            name="username"
-                                            id="username"
-                                            autoComplete="username"
+                                            name="title"
                                             className="block w-full border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                            value={ formValues.title }
+                                            onChange={ onInputChange }
                                         />
                                     </div>
                                 </div>
@@ -40,11 +62,12 @@ export const NewArticlePage = () => {
                                 </label>
                                 <div className="mt-2">
                                     <textarea
-                                        id="about"
-                                        name="about"
-                                        rows={3}
+                                        id="content"
+                                        name="content"
+                                        rows={20}
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        defaultValue={''}
+                                        value={ formValues.content }
+                                        onChange={ onInputChange }
                                     />
                                 </div>
                             </div>

@@ -1,19 +1,14 @@
 import { Article } from "./Article"
 import imgOne from '../../assets/images/image-retro-pcs.jpg'
-import { useEffect, useState } from "react"
-import { getPublications } from "../../helpers/getPublications"
+import { useEffect } from "react"
+import { useBlogStore } from "../../hooks/useBlogStore"
 
 export const ArticleContainer = () => {
 
-  const [publications, setPublications ] = useState([]);
-
-  const getInitialPublications = async() => {
-    const newPublications = await getPublications(10);
-    setPublications(newPublications.content);
-  }
+  const { publications, loadPublications } = useBlogStore();
 
   useEffect(() => {
-    getInitialPublications();
+    loadPublications();
   }, [])
 
   return (

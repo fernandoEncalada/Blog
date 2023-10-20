@@ -12,12 +12,18 @@ export const blogSlice = createSlice({
         isSavingPublication: (state) => {
             state.isSaving = true;
         },
-        addNewEmptyPublication: (state, action) => {
+        addNewPublication: (state, action) => {
             state.publications.push(action.payload);
             state.isSaving = false;
         },
         setPublications: (state, action) => {
-            state.publications = action.payload;
+            state.publications = action.payload.content;
+        },
+        setPublicationById: ( state, action ) => {
+            console.log(action.payload);
+            console.log(state.publications);
+            state.publication = state.publications.find(publication => publication.id === parseInt(action.payload));
+            console.log(state.publications.find(publication => publication.id === parseInt(action.payload)));
         },
         setSaving: (state, action) => {
             state.isSaving = true;
@@ -38,8 +44,9 @@ export const blogSlice = createSlice({
 });
 
 export const {
-    addNewEmptyPublication,
+    addNewPublication,
     setPublications,
     setSaving,
-    isSavingPublication
+    isSavingPublication,
+    setPublicationById
 } = blogSlice.actions;
