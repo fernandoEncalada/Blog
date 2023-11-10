@@ -1,6 +1,8 @@
 import publicationImage from '../../assets/images/image-retro-pcs.jpg'
+import DOMPurify from 'dompurify';
 
 export const ArticleDetail = ({ title, content, category, createdAt, picture = '' }) => {
+    const sanitizedHTML = { __html: DOMPurify.sanitize(content) };
     return (
         <section>
             <h1 className="font-bold text-[42px]">{ title }</h1>
@@ -15,7 +17,7 @@ export const ArticleDetail = ({ title, content, category, createdAt, picture = '
                 <div className='flex justify-center'>
                 {/* <img src={publicationImage} alt="Publication image" width='700' height='467' /> */}
                 </div>
-                <p className='text-[20px] text-justify leading-[32px] mt-5'> { content } </p>
+                <p className='text-[20px] text-justify leading-[32px] mt-5' dangerouslySetInnerHTML={sanitizedHTML} / > 
             </div>
         </section>
     )

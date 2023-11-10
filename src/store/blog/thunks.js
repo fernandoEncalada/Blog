@@ -20,7 +20,6 @@ export const startNewPublication = () => {
         }
         // TODO: CHANGE 1 FOR THE USER ID LOGGED
         const data = await blogApi.post('/publications/1', newPublication );
-        console.log(data);
         dispatch( addNewEmptyPublication( newPublication ));
     }
 }
@@ -41,7 +40,7 @@ export const startSavePublication = () => {
 
 export const startLoadingPublications = () => {
     return async( dispatch, getState ) => {
-        const publications = await getPublications();
+        const publications = await getPublications(100);
         dispatch( setPublications(publications) );
     }
 }

@@ -20,10 +20,8 @@ export const blogSlice = createSlice({
             state.publications = action.payload.content;
         },
         setPublicationById: ( state, action ) => {
-            console.log(action.payload);
             console.log(state.publications);
             state.publication = state.publications.find(publication => publication.id === parseInt(action.payload));
-            console.log(state.publications.find(publication => publication.id === parseInt(action.payload)));
         },
         setSaving: (state, action) => {
             state.isSaving = true;

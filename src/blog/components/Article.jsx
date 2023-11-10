@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import DOMPurify from 'dompurify';
 
 export const Article = ({ id, img, title, text, date, category }) => {
+  const sanitizedHTML = { __html: DOMPurify.sanitize(text) };
   return (
     <article className="flex w-full mx-auto flex-col items-center justify-between bg-white p-6 rounded-lg shadow-md">
       <div className="flex justify-around items-center  gap-x-4 text-xs">
@@ -17,9 +19,7 @@ export const Article = ({ id, img, title, text, date, category }) => {
             {title}
           </Link>
         </h3>
-        <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-          {text}
-        </p>
+        <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600" dangerouslySetInnerHTML={sanitizedHTML} />
       </div>
       <div className="relative mt-8 flex items-center gap-x-4">
         <img src={img} alt="" className="h-10 w-10 rounded-full bg-gray-50" />

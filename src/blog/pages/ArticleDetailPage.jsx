@@ -26,7 +26,8 @@ export const ArticleDetailPage = () => {
   };
 
   useEffect(() => {
-    getPublicationById(id);
+    console.log(id);
+    fetchArticle();
   }, [id]);
 
   if (loading) {

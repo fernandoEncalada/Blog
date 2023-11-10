@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import { useBlogStore } from '../../hooks/useBlogStore';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export const NewArticlePage = () => {
 
@@ -26,11 +28,21 @@ export const NewArticlePage = () => {
         })
     }
 
+    const onInputContent = (content) => {
+        console.log(content);
+        setFormValues({
+            ...formValues,
+            content: content
+        })
+    }
+
     const onSubmit = async( event ) => {
         event.preventDefault();
 
         await startSavingPublication( formValues )
     }
+
+    const [value, setValue] = useState('');
 
     return (
         <>
@@ -55,8 +67,13 @@ export const NewArticlePage = () => {
                                     </div>
                                 </div>
                             </div>
-
                             <div className="col-span-full">
+
+                            <ReactQuill theme="snow" id="content"
+                                        name="content" value={ formValues.content } onChange={ onInputContent } />
+                            </div>
+
+                            {/* <div className="col-span-full">
                                 <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
                                     Content
                                 </label>
@@ -70,7 +87,7 @@ export const NewArticlePage = () => {
                                         onChange={ onInputChange }
                                     />
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className="col-span-full">
                                 <label htmlFor="photo" className="block text-sm font-medium leading-6 text-gray-900">

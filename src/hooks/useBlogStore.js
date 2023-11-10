@@ -20,8 +20,6 @@ export const useBlogStore = () => {
         try {
             const { data } = await blogApi.get('/publications?page=0&size=20&sortBy=id&sortDir=asc');
             dispatch( setPublications( data ));
-            console.log(data);
-            console.log('entra');
         } catch ( error ) {
             console.log(error);
         }
