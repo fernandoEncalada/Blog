@@ -9,7 +9,7 @@ export const ArticleRoutes = () => {
     <Routes>
         <Route path='/' element={ <ArticlePage /> } />
         <Route path='/create' element={ <NewArticlePage /> } />
-        <Route path=':id' element={ <ArticleDetailPage /> } />
+        <Route path='/:id' element={ <ArticleDetailPage /> } />
         <Route path='/*' element={ <Navigate to='/' /> } />
     </Routes>
   )

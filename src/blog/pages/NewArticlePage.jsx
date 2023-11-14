@@ -2,12 +2,14 @@ import { useRef, useState } from 'react';
 import { useBlogStore } from '../../hooks/useBlogStore';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { Link, redirect, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export const NewArticlePage = () => {
 
-    // const dispatch = useDispatch();
-
     const fileInputRef = useRef();
+
+    const navigate = useNavigate();
 
     // const { article, messageSaved, isSaving } = useSelector( state => state.blog );
 
@@ -38,11 +40,21 @@ export const NewArticlePage = () => {
 
     const onSubmit = async( event ) => {
         event.preventDefault();
+        try{
+            await startSavingPublication( formValues )
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Publication created",
+                showConfirmButton: true
+            });
+            navigate('/')
+        } catch (error) {
+            console.log(error);
+        }
 
-        await startSavingPublication( formValues )
+
     }
-
-    const [value, setValue] = useState('');
 
     return (
         <>
@@ -101,6 +113,7 @@ export const NewArticlePage = () => {
                   Change
                 </button> */}
                                     <input type="file" />
+                                    
                                 </div>
                             </div>
                         </div>
@@ -108,9 +121,9 @@ export const NewArticlePage = () => {
                 </div>
 
                 <div className="mt-6 flex items-center justify-end gap-x-6">
-                    <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+                    <Link type="button" className="text-sm font-semibold leading-6 text-gray-900" to='/'>
                         Cancel
-                    </button>
+                    </Link>
                     <button
                         type="submit"
                         className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
