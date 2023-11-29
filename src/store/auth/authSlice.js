@@ -11,11 +11,11 @@ export const authSlice = createSlice({
     },
     reducers: {
         login: ( state, { payload }) => {
+            console.log(payload);
             state.status = 'authenticated';
             state.token = payload.token; 
             state.username = payload.username;
-            console.log(state.token);
-            console.log(state.username);
+            console.log('token: ', state.token);
         },
         logout: (state, { payload }) => {
             state.status = 'not-authenticated';

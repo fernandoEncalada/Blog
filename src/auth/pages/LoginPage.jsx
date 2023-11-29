@@ -3,8 +3,8 @@ import { useForm } from "../../hooks/useForm"
 import { startLoginWithUsernameAndPassword } from "../../store/auth/thunks";
 
 const formData = {
-  username: '',
-  password: ''
+  username: 'fertrix',
+  password: '123456'
 }
 
 export const LoginPage = () => {
