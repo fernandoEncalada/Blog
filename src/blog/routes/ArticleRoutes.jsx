@@ -7,10 +7,10 @@ import { NewArticlePage } from '../pages/NewArticlePage'
 export const ArticleRoutes = () => {
   return (
     <Routes>
-        <Route path='/' element={ <ArticlePage /> } />
-        <Route path='/create' element={ <NewArticlePage /> } />
-        <Route path='/:id' element={ <ArticleDetailPage /> } />
-        <Route path='/*' element={ <Navigate to='/' /> } />
+      {/* TEST */}
+        {/* <Route path='/' element={ <ArticlePage /> } />
+        <Route path='/detail/:id' element={ <ArticleDetailPage /> } />
+        <Route path='/*' element={ <Navigate to='/' /> } /> */}
     </Routes>
   )
 }

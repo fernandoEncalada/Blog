@@ -1,6 +1,9 @@
 import { useDispatch } from "react-redux";
 import { useForm } from "../../hooks/useForm"
 import { startLoginWithUsernameAndPassword } from "../../store/auth/thunks";
+import { useAuthStore } from "../../hooks/useAuthStore";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 const formData = {
   username: 'fertrix',
@@ -9,13 +12,20 @@ const formData = {
 
 export const LoginPage = () => {
 
-  const dispatch = useDispatch();
+  const { startLogin, errorMessage } = useAuthStore();
   const { username, password, onInputChange } = useForm( formData );
 
   const onSubmit = ( event ) => {
     event.preventDefault();
-    dispatch( startLoginWithUsernameAndPassword({ username, password }));
+    startLogin({ username, password });
   }
+
+  useEffect(() => {
+    if(errorMessage !== undefined) {
+      Swal.fire('Authentication Error', errorMessage, 'error');
+    }
+  }, [errorMessage])
+  
   return (
     <form onSubmit={ onSubmit } className="flex w-full mx-auto flex-col items-center justify-between bg-white p-6 rounded-lg shadow-md">
       <div>
