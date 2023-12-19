@@ -18,7 +18,7 @@ export const useBlogStore = () => {
 
     const loadPublications = async() => {
         try {
-            const { data } = await blogApi.get('/publications?page=0&size=20&sortBy=id&sortDir=asc');
+            const { data } = await blogApi.get('/publications?page=0&size=100&sortBy=id&sortDir=desc');
             dispatch( setPublications( data ));
         } catch ( error ) {
             console.log(error);
