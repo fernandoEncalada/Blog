@@ -13,7 +13,6 @@ function App() {
       </main>
       <Footer />
     </div>
-
     </>
   )
 }

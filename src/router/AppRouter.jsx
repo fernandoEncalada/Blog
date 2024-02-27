@@ -5,6 +5,7 @@ import { NewArticlePage } from '../blog/pages/NewArticlePage';
 import { LoginPage } from '../auth/pages/LoginPage';
 import { ArticlePage } from '../blog/pages/ArticlePage';
 import { ArticleDetailPage } from '../blog/pages/ArticleDetailPage';
+import { RegisterPage } from '../auth/pages/RegisterPage';
 
 export const AppRouter = () => {
 
@@ -30,6 +31,7 @@ export const AppRouter = () => {
 
       <Route path='/' element={<ArticlePage />} />
       <Route path='/:id' element={<ArticleDetailPage />} />
+      <Route path='/auth/register' element={<RegisterPage />} />
       <Route path='/create' element={<Navigate to='/auth/login' />} />
       <Route path='/*' element={<Navigate to='/' />} />
     </Routes>

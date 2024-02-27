@@ -40,11 +40,11 @@ export const Navbar = () => {
           </li>
           ))
         }
-        <li className='mb-8 sm:mb-0'>
+        {/* <li className='mb-8 sm:mb-0'>
           <Link className='hover:text-SoftRed sm:text-4' to="/create">
             Create
           </Link>
-        </li>
+        </li> */}
       </ul>
       <img className={`${menuClicked ? '' : 'hidden'} w-10 h-4 cursor-pointer sm:hidden`} src={burgerMenu} onClick={handleClick} alt="" />
   

@@ -28,6 +28,25 @@ export const useAuthStore = () => {
         }
     }
 
+    const startRegister = async({ name, lastName, email, username, password }) => {
+        
+        dispatch(checkingCredentials());
+
+        try {
+            const { data } = await blogApi.post('/auth/register', { name, lastName, email, username, password });
+            console.log(data);
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('token-init-date', new Date().getTime());
+            dispatch(login({ token: data.token, username}));
+
+        } catch (e) {
+            dispatch(logout('Bad credentials'));
+            setTimeout(() => {
+                dispatch(clearErrorMessage());
+            }, 10);
+        }
+    }
+
     const checkAuthToken = async() => {
         const token = localStorage.getItem('token');
         if( !token ) return dispatch(logout('Token Expired'));
@@ -53,6 +72,7 @@ export const useAuthStore = () => {
         user, 
         errorMessage,
         startLogin,
+        startRegister,
         checkAuthToken
     }
 }
