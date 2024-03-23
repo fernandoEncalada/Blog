@@ -3,8 +3,12 @@ import burgerMenu from '../assets/images/icon-menu.svg'
 import closeBtn from '../assets/images/icon-menu-close.svg'
 import { getCategories } from '../helpers/getCategories';
 import { Link } from 'react-router-dom';
+// import { useAuthStore } from "../../hooks/useAuthStore";
+import { useAuthStore } from "../hooks/useAuthStore";
 
 export const Navbar = () => {
+
+  const { status } = useAuthStore();
 
   const [categories, setCategories ] = useState([])
   
@@ -17,9 +21,15 @@ export const Navbar = () => {
   },[])
 
   const [menuClicked, setMenuClicked] = useState(true)
+  
+  const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(status === 'authenticated' ? true : false)
 
   const handleClick = () => {
     setMenuClicked(prevState => !prevState)
+  }
+
+  const isAuthenticated = () => {
+
   }
 
   return (
@@ -36,15 +46,20 @@ export const Navbar = () => {
         {
           categories.map(category => (
             <li className='mb-8 sm:mb-0' key={category.id}>
-              <a className='hover:text-SoftRed' href="#">{category.name}</a>
+              <Link className='hover:text-SoftRed' to="">
+                {category.name}
+              </Link>
           </li>
           ))
         }
-        {/* <li className='mb-8 sm:mb-0'>
-          <Link className='hover:text-SoftRed sm:text-4' to="/create">
-            Create
-          </Link>
-        </li> */}
+        <li className='mb-8 sm:mb-0'>
+          {status === 'authenticated' && (
+            <Link className='hover:text-SoftRed sm:text-4' to="/create">
+              Create
+            </Link>
+          )}
+        </li>
+
       </ul>
       <img className={`${menuClicked ? '' : 'hidden'} w-10 h-4 cursor-pointer sm:hidden`} src={burgerMenu} onClick={handleClick} alt="" />
   

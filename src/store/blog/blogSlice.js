@@ -6,6 +6,7 @@ export const blogSlice = createSlice({
         isSaving: false,
         messageSaved: '',
         publications: [],
+        categories: [],
         publication: null
     },
     reducers: {
@@ -14,6 +15,10 @@ export const blogSlice = createSlice({
         },
         addNewPublication: (state, action) => {
             state.publications.push(action.payload);
+            state.isSaving = false;
+        },
+        addNewCategory: (state, action) => {
+            state.categories.push(action.payload);
             state.isSaving = false;
         },
         setPublications: (state, action) => {
@@ -42,6 +47,7 @@ export const blogSlice = createSlice({
 
 export const {
     addNewPublication,
+    addNewCategory,
     setPublications,
     setSaving,
     isSavingPublication,

@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import Swal from "sweetalert2";
 
 const formData = {
-  username: 'fertrix',
-  password: '123456'
+  username: 'perro',
+  password: 'perro'
 }
 
 export const LoginPage = () => {
@@ -34,11 +34,11 @@ export const LoginPage = () => {
           <div className="mt-2">
             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
               <input
-                  type="text"
-                  name="username"
-                  className="block w-full border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  value={ username }
-                  onChange={ onInputChange }
+                type="text"
+                name="username"
+                className="block w-full border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                value={ username }
+                onChange={ onInputChange }
               />
             </div>
           </div>
@@ -50,11 +50,11 @@ export const LoginPage = () => {
           <div className="mt-2">
             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
               <input
-                  type="password"
-                  name="password"
-                  className="block w-full border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  value={ password }
-                  onChange={ onInputChange }
+                type="password"
+                name="password"
+                className="block w-full border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                value={ password }
+                onChange={ onInputChange }
               />
             </div>
           </div>
