@@ -22,7 +22,11 @@ export const blogSlice = createSlice({
             state.isSaving = false;
         },
         setPublications: (state, action) => {
+            console.log(action.payload);
             state.publications = action.payload.content;
+        },
+        setPublicationsByCategory: (state, action) => {
+            state.publications = action.payload;
         },
         setPublicationById: ( state, action ) => {
             state.publication = state.publications.find(publication => publication.id === parseInt(action.payload));
@@ -49,6 +53,7 @@ export const {
     addNewPublication,
     addNewCategory,
     setPublications,
+    setPublicationsByCategory,
     setSaving,
     isSavingPublication,
     setPublicationById

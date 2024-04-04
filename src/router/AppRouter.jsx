@@ -7,6 +7,7 @@ import { ArticlePage } from "../blog/pages/ArticlePage";
 import { ArticleDetailPage } from "../blog/pages/ArticleDetailPage";
 import { RegisterPage } from "../auth/pages/RegisterPage";
 import { EditArticlePage } from "../blog/pages/EditArticlePage";
+import { CategoryArticlePage } from "../blog/pages/CategoryArticlePage";
 
 export const AppRouter = () => {
   const { status, checkAuthToken } = useAuthStore();
@@ -30,6 +31,7 @@ export const AppRouter = () => {
       <Route path="/" element={<ArticlePage />} />
       <Route path="/:id" element={<ArticleDetailPage />} />
       <Route path="/edit/:id" element={<EditArticlePage />} />
+      <Route path="/category/:id" element={<CategoryArticlePage />} />
       <Route path="/auth/register" element={<RegisterPage />} />
       <Route path="/create" element={<Navigate to="/auth/login" />} />
 

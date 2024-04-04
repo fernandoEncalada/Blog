@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import blogApi from "../api/blogApi";
-import { addNewCategory, addNewPublication, setPublicationById, setPublications } from "../store/blog/blogSlice";
+import { addNewCategory, addNewPublication, setPublicationById, setPublications, setPublicationsByCategory } from "../store/blog/blogSlice";
 
 export const useBlogStore = () => {
 
@@ -43,10 +43,18 @@ export const useBlogStore = () => {
         }
     }
 
+    const loadPublicationsByCategoryId = async(id) => {
+        try {
+            const { data } = await blogApi.get(`/publications/category/${id}`);
+            dispatch( setPublicationsByCategory( data ));
+        } catch ( error ) {
+            console.log(error);
+        }
+    }
+
     const getPublicationById = async(id) => {
         await loadPublications();
         dispatch(setPublicationById( id ))
-        console.log(publication);
     }
 
     return {
@@ -55,6 +63,7 @@ export const useBlogStore = () => {
         startSavingCategory,
         loadPublications,
         getPublicationById,
+        loadPublicationsByCategoryId,
         publications,
         publication
     }

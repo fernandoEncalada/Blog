@@ -8,7 +8,7 @@ export const ArticlePage = () => {
     <div className="lg:flex lg:flex-col lg:gap-6">
       {/* <MainArticle /> */}
       {/* <NewContainer /> */}
-      <ArticleContainer />
+      <ArticleContainer/>
     </div>
   );
 };

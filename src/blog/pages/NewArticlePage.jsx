@@ -38,6 +38,7 @@ export const NewArticlePage = () => {
   });
 
   const onInputChange = ({ target }) => {
+    console.log(target);
     setFormValues({
       ...formValues,
       [target.name]: target.value,
@@ -45,10 +46,16 @@ export const NewArticlePage = () => {
   };
 
   const onInputContent = (content) => {
-    console.log(content);
     setFormValues({
       ...formValues,
       content: content,
+    });
+  };
+  const onInputCategory = (id) => {
+    console.log(id);
+    setFormValues({
+      ...formValues,
+      categoryId: id,
     });
   };
 
@@ -135,14 +142,19 @@ export const NewArticlePage = () => {
                   Category
                 </label>
                 <div className="mt-2 flex items-center gap-x-3">
-                  <select>
+                  <select
+                    id="categoryId"
+                    name="categoryId"
+                    value={formValues.categoryId}
+                    onChange={onInputChange}
+                  >
                     {categories.map((category) => (
                       <option
                         className="mb-8 sm:mb-0"
                         key={category.id}
-                        value={formValues.categoryId}
+                        value={category.id}
                       >
-                        {category.name}
+                        {category.id} - {category.name}
                       </option>
                     ))}
                   </select>

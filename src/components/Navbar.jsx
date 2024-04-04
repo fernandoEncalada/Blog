@@ -46,7 +46,7 @@ export const Navbar = () => {
         {
           categories.map(category => (
             <li className='mb-8 sm:mb-0' key={category.id}>
-              <Link className='hover:text-SoftRed' to="">
+              <Link className='hover:text-SoftRed' to={`/category/${category.id}`}>
                 {category.name}
               </Link>
           </li>
